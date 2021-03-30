@@ -1,17 +1,13 @@
-const { createElement } = require("react")
-const { renderToString } = require("react-dom/server")
-const { css } = require("./stitches.config")
+import * as React from "react"
+import { getCssString } from "./src/stitches.config"
 
-exports.replaceRenderer = ({ bodyComponent, setHeadComponents }) => {
-  const { styles } = css.getStyles(() => renderToString(bodyComponent))
+import type { RenderBodyArgs } from "gatsby"
 
-  setHeadComponents(
-    styles.map((sheet, i) =>
-      createElement(
-        "style",
-        { key: i, dangerouslySetInnerHTML: { __html: sheet } },
-        null
-      )
-    )
-  )
+export const onRenderBody = ({ setHeadComponents }: RenderBodyArgs) => {
+  setHeadComponents([
+    <style
+      id="stitches"
+      dangerouslySetInnerHTML={{ __html: getCssString() }}
+    />,
+  ])
 }

@@ -37,7 +37,7 @@ const Container = styled("div", {
 export default function Home() {
   return (
     <Box css={{ paddingY: "$6" }}>
-      <Container size={{ initial: "1", bp1: "2" }}>
+      <Container size={{ "@initial": "1", "@bp1": "2" }}>
         <StitchesLogo />
         <Text as="h1">Hello, from Stitches.</Text>
         <Text>
