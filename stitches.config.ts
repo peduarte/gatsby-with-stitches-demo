@@ -1,6 +1,6 @@
 import { createCss } from "@stitches/react"
 
-export const { styled, css } = createCss({
+export const { styled, getCssString } = createCss({
   theme: {
     colors: {
       hiContrast: "hsl(206,10%,5%)",
